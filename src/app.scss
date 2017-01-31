@@ -1,0 +1,25 @@
+/*colors*/
+$primary: #5a5c5a;
+
+.App {
+  text-align: center;
+  background-color: $primary;
+  height: 100vh;
+  font-family: 'Kalam', cursive;
+}
+.App-logo {
+  animation: App-logo-spin infinite 15s linear;
+  height: 80px;
+}
+.loading{
+  display: flex;
+  justify-content: center;
+  font-size: 5em;
+  margin-top: 40vh;
+  color: $primary;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
