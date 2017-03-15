@@ -13,7 +13,8 @@ import Icon from "./components/icon";
 
 //=======CONTAINER================================
 
-class App extends Component {
+
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +22,7 @@ class App extends Component {
     };
     this.searchByCity = this.searchByCity.bind(this);
   }
-  componentDidMount() {
+  componentWillMount() {
     // Fires when the component is called for the first time just before component is Rendered
     this.getLocalWeather();
   }
@@ -34,8 +35,6 @@ class App extends Component {
   }
   getLocalWeather(){
     Api.getLocalWeather().then(response => {
-      // For data sample if dev offline, uncomment next line
-      // localStorage.setItem('localWeatherData', JSON.stringify(response.data),null,2);
       this.setState({
         weatherData: response.data
       });
@@ -50,7 +49,7 @@ class App extends Component {
             <Weather
               city={`${data.name}, ${data.sys.country.toUpperCase()}`}
               weatherCode={data.weather[0].id}
-              weatherDescription={data.weather[0].main}
+              weatherDescription={data.weather[0].description}
               temperature={data.main.temp}
               windSpeed={data.wind.speed}
               humidity={data.main.humidity}
