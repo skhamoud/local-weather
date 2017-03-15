@@ -2,24 +2,46 @@ import React from "react";
 import _ from "../helpers";
 import Icon from "./icon";
 // ============================================
-import "../sass/weather.scss";
+import "./../sass/weather.scss";
 
-/* Icons Class Names from Weather-icons  */
+// Icons Class Names from Weather-icons 
 const icons = _.icons;
 
-function Weather(props) {
+class TempComponent extends React.Component{
+	constructor(props){
+		super(props);
+		this.handleTemp = this.handleTemp.bind(this);
+		this.state = {unit : "C"};
+	}
+	handleTemp(){
+		this.setState(prevState=>({unit: prevState.unit==="F"? "C": 'F'}));
+	}
+
+	render(){
+		const newTemp = Math.floor(this.props.temperature);
+		const unit = this.state.unit;
+		const temp = unit==="C"?newTemp:(newTemp*1.8)+32;
+		return (
+			<div  className="wb wb__temp">
+          <Icon className={icons.temperature} title="Temperature"/>
+          <span className="wb__temp-number" >{Math.floor(temp)}</span>
+					<button className="wb__temp-btn" onClick={this.handleTemp}>&deg;{unit}</button>
+      </div>);
+	}
+}
+
+function Weather (props){
+		
   return (
     <div className="weather">
       <h2>{props.city} </h2>
-      <div className="wc wc__status" >
-        <Icon weatherCode={props.weatherCode} title={props.weatherDescription}/>
+      <div className="wb wb__status" >
+        <Icon weatherCode={props.weatherCode} title='Weather Status'/> 
+				<div>{props.weatherDescription}</div>
+				
       </div>  
-      <div  className="wc">
-          <Icon className={icons.temperature} title="Temperature"/>
-          <span className="wc__temp" >{props.temperature} &deg; C</span>
-      </div>
-      <div  className="wc">{_.showTime()}</div>
-      <div className="wc weather__row">
+      <TempComponent temperature={props.temperature} />
+      <div className="wb weather__row">
         <span>
           <Icon className={icons.wind} title="Wind"/>
           <br/>{props.windSpeed} m/s
@@ -33,9 +55,9 @@ function Weather(props) {
           <br/>{Number(props.pressure).toFixed(0)} hpa
         </span>
       </div>
-
+			
     </div>
   );
+	
 }
-
 export default Weather;
