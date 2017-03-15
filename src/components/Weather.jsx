@@ -2,7 +2,6 @@ import React from "react";
 import _ from "../helpers";
 import Icon from "./icon";
 // ============================================
-import "./../sass/weather.scss";
 
 // Icons Class Names from Weather-icons 
 const icons = _.icons;
