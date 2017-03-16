@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import _ from './helpers';
 //===========Styles==================
 import "normalize.css";
-import './app.scss';
+import './app.scss'; // wont compile in build task
+import './app.css'; // hence this one 
 
 //=============Components=======
 import Api from './api';
