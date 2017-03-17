@@ -2,7 +2,7 @@
   "name": "local-weather",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://skhamoud.github.io/local-weather",
+  "homepage": "https://sk-weather.surge.sh/",
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
@@ -64,7 +64,7 @@
     "build": "npm run build-css&&node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "cd ./build&&surge"
   },
   "jest": {
     "collectCoverageFrom": [
