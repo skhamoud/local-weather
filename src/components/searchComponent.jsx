@@ -7,17 +7,17 @@ class SearchComponent extends Component {
 		this.handleIconClick= this.handleIconClick.bind(this);
   }
   render() {
-    return (
-			<div className = 'searchbox'>
-				<i	className="material-icons"
-					onClick={this.handleIconClick}>search</i>
-				<input type="text" 
-						 name="search"
-						 placeholder= "City name"
-						 ref={input => this.searchTextInput = input}
-						 onKeyPress={this.handleSearch}/>
-				
-			</div>);
+	return (
+	<div className = 'searchbox'>
+		<i	className="material-icons"
+			onClick={this.handleIconClick}>search</i>
+		<input type="text" 
+				 name="search"
+				 placeholder= "City name"
+				 ref={input => this.searchTextInput = input}
+				 onKeyPress={this.handleSearch}/>
+
+	</div>);
   }
   handleSearch(e) {
     let city = e.target.value || "";
