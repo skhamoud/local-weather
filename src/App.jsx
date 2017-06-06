@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from './helpers';
 //===========Styles==================
 import "normalize.css";
 import './app.scss'; // wont compile in build task
@@ -23,7 +22,7 @@ class App extends React.Component {
     };
     this.searchByCity = this.searchByCity.bind(this);
   }
-  componentWillMount() {
+  componentDidMount() {
     // Fires when the component is called for the first time just before component is Rendered
     this.getLocalWeather();
   }
@@ -67,3 +66,5 @@ class App extends React.Component {
   }
 }
 export default App;
+
+// TODO: change bg based on temp 
