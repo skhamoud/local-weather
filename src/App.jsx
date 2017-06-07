@@ -27,18 +27,12 @@ class App extends React.Component {
     this.getLocalWeather();
   }
   searchByCity(cityName) {
-    Api.searchWeather(cityName).then((response) => {
-      this.setState({
-        weatherData: response.data,
-      });
-    });
+    Api.searchWeather(cityName)
+    .then(response => this.setState({weatherData: response.data}));
   }
   getLocalWeather(){
-    Api.getLocalWeather().then(response => {
-      this.setState({
-        weatherData: response.data
-      });
-    });
+    Api.getLocalWeather()
+    .then(response => this.setState({weatherData: response.data}));
   }
   render() {
     const data = this.state.weatherData;
